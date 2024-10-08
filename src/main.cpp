@@ -34,9 +34,9 @@ void publishDevice(const std::string &topic, long long payload);
 void onMQTTConnect() {
 	mqttSender = h4.every(2000, []()
 					  {
-						  publishDevice("heap", _HAL_freeHeap());
-						  publishDevice("uptime",h4p.gvGetstring(upTimeTag()));
-						  publishDevice("maxbloc",_HAL_maxHeapBlock());
+						publishDevice("heap", _HAL_freeHeap());
+						publishDevice("uptime",h4p.gvGetstring(upTimeTag()));
+						publishDevice("maxbloc",_HAL_maxHeapBlock());
 					  });
 	
 	bigSender = h4.every(3000,[]{
